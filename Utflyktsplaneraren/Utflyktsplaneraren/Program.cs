@@ -37,10 +37,20 @@ namespace MyProgram
                 return 1;
             }
 
+            if(antal <= 0)
+            {
+                Console.WriteLine("Antal personer måste vara större än 0");
+                return 1;
+            }
+            else if(resa < 0 || mat < 0)
+            {
+                Console.WriteLine("kostnaderna måste vara större än eller lika med 0.");
+                return 1;
+            }
 
 
-            // Räknar ut kostnaden för en person.
-            int kostnadPerPerson = resa + mat;
+                // Räknar ut kostnaden för en person.
+                int kostnadPerPerson = resa + mat;
 
             // Räknar ut kostnaden för hela gruppen.
             int totalKostnad = kostnadPerPerson * antal;
