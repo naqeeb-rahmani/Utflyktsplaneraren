@@ -1,23 +1,43 @@
 ﻿using System;
 
-
-namespace Utflyktsplaneraren
+namespace MyProgram
 {
-    internal class Program
+    class Program
     {
-        static void Main(string[] args)
+        static int Main()
         {
 
             Console.WriteLine("=== UTFLYKTSKALKYLATOR ===");
 
-            Console.Write("Hur många personer ska följa med? ");
-            int antal = Convert.ToInt32(Console.ReadLine());
+            int antal; int resa; int mat;
 
-            Console.Write("Vad kostar resan per person? ");
-            int resa = Convert.ToInt32(Console.ReadLine());
 
-            Console.Write("Vad kostar maten per person? ");
-            int mat = Convert.ToInt32(Console.ReadLine());
+            //felhanterar koden
+            try
+            {
+
+                Console.Write("Hur många personer ska följa med? ");
+                antal = Convert.ToInt32(Console.ReadLine());
+
+                Console.Write("Vad kostar resan per person? ");
+                resa = Convert.ToInt32(Console.ReadLine());
+
+                Console.Write("Vad kostar maten per person? ");
+                mat = Convert.ToInt32(Console.ReadLine());
+
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Felaktig inmatning. Vänligen ange ett heltal.");
+                return 1;
+            }
+            catch (OverflowException)
+            {
+                Console.WriteLine("För stor/För liten inmatning. Vänligen ange ett heltal inom intervallet för en 32 bits int.");
+                return 1;
+            }
+
+
 
             // Räknar ut kostnaden för en person.
             int kostnadPerPerson = resa + mat;
@@ -29,6 +49,10 @@ namespace Utflyktsplaneraren
             Console.WriteLine("Kostnad per person: " + kostnadPerPerson + " kr");
             Console.WriteLine("Total kostnad: " + totalKostnad + " kr");
 
+
+            return 0;
+
         }
     }
+
 }
